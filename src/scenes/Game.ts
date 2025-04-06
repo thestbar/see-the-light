@@ -20,6 +20,12 @@ export class Game extends Scene {
     }
 
     create() {
+        this.sound.stopAll();
+        const music = this.sound.add('ambient');
+        music.setLoop(true);
+        music.setVolume(0.2);
+        music.play();
+
         this.camera = this.cameras.main;
         this.camera.setBackgroundColor(0x000010);
 
