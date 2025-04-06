@@ -1,20 +1,14 @@
 import { Scene } from 'phaser';
 
-export class MainMenu extends Scene {
+export class WinScreen extends Scene {
     camera: Phaser.Cameras.Scene2D.Camera;
     background: Phaser.GameObjects.Image;
 
     constructor() {
-        super('MainMenu');
+        super('WinScreen');
     }
 
     create() {
-        this.sound.stopAll();
-        const music = this.sound.add('ambient');
-        music.setLoop(true);
-        music.setVolume(0.2);
-        music.play();
-
         this.camera = this.cameras.main;
         this.camera.setBackgroundColor(0x000010);
 
@@ -24,12 +18,12 @@ export class MainMenu extends Scene {
             'background'
         );
 
-        this.background.setAlpha(0.1);
+        this.background.setAlpha(1);
 
         this.addText(
             null,
             this.scale.height / 4,
-            'See the Light',
+            'You have reached the surface!',
             null,
             null,
             null
@@ -38,7 +32,16 @@ export class MainMenu extends Scene {
         this.addText(
             null,
             this.scale.height / 2,
-            'Click to start',
+            'Hope you enjoyed the game!',
+            null,
+            null,
+            null
+        );
+
+        this.addText(
+            null,
+            this.scale.height - 20,
+            'Ludum Dare 57',
             null,
             null,
             null
@@ -46,7 +49,7 @@ export class MainMenu extends Scene {
 
         this.input.once('pointerdown', () => {
 
-            this.scene.start('Game');
+            this.scene.start('MainMenu');
 
         });
     }
